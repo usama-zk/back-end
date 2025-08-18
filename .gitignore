@@ -1,1 +1,4 @@
-"Hello World"
+# .gitignore
+node_modules/
+.env
+*.log
