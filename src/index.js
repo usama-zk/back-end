@@ -17,6 +17,15 @@
 //     throw error;
 //   }
 // })();
-require("dotenv").config();
+require("dotenv").config({ path: "../.env" });
 const connectDB = require("./db/index.js");
-connectDB();
+const app = require("./app.js");
+connectDB()
+  .then(() => {
+    app.listen(process.env.PORT, () => {
+      console.log(`Server is running on port ${process.env.PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.log("Database connection failed", error);
+  });
